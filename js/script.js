@@ -9,3 +9,9 @@
 // 2. Titolo Originale
 // 3. Lingua
 // 4. Voto
+
+//Chiave API generata: 8d266159d93c16994b091fb8d2846c24
+
+$(document).ready({
+
+});
