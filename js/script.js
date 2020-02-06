@@ -13,10 +13,6 @@
 // --CHIAVE API--
 //Chiave API generata: 8d266159d93c16994b091fb8d2846c24
 
-//--MATERIALE HANDLEBARS NECESSARIO--
-
-//
-
 //VALORI CHE MI SERVONO PER LA RICERCA
 // "page": 1,
 //     "total_results": 202,
@@ -44,7 +40,7 @@
 // var query = 'Rocky';
 
 $(document).ready(function() {
-  $('.button_research').click(function(){
+  $('.button_research').click(function() {
     console.log('proviamo il click');
     // creo una variabile per l'impostazione della ricerca e le attribuisco il nome fieldResearch e poi inserisco il nome della variabile nella query.
 
@@ -64,7 +60,7 @@ $(document).ready(function() {
 });
 
 // FUNZIONI
-
+//Mi permette di stampare i film all'interno dell'API e di inserirli in un array attraverso un ciclo for e riportarli poi sull'HTML tramite Handlebars.
 function printFilmsSearch (allFilms){
   var source = $('#film-template').html();
   var template = Handlebars.compile(source);
@@ -85,6 +81,7 @@ function printFilmsSearch (allFilms){
     $('.covers').append(html)
   };
 };
+//Mi permette di far partire la chiamata Ajax per ricevere la lista di titoli FILM di mio interesse in base alla chiave API inserita. All'interno di questa funzione, vado anache a richiamare la funzione stampa tutti i film (QUI SOPRA).
 
 function ajaxCall(fieldResearch) {
   $.ajax({
