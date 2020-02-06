@@ -44,7 +44,7 @@
 // var query = 'Rocky';
 
 $(document).ready(function() {
-  $('button').click(function(){
+  $('.button_research').click(function(){
     console.log('proviamo il click');
     // creo una variabile per l'impostazione della ricerca e le attribuisco il nome fieldResearch e poi inserisco il nome della variabile nella query.
 

@@ -13,17 +13,16 @@
   <title>BoolFlix</title>
 </head>
 <body>
+  <!-- CAMPO RICERCA -->
   <input class="field_input" type="text" name="" value="" placeholder="Carca un film o una serie">
-  <button type="button" name="button">Avvia la ricerca</button>
+  <button class="button_research" type="button" name="button">Avvia la ricerca</button>
+  <!-- SEZIONE LISTA FILM -->
   <ul class="covers">
 
   </ul>
-
+  <!-- SEZIONE HANDLEBARS -->
   <script id="film-template" type="text/x-handlebars-template">
     <li>{{title}} - {{original_title}} - {{original_language}} - {{vote_average}}</li>
-  </script>
-
-  <script id="entry-template" type="text/x-handlebars-template">
   </script>
 
   <script src="js/script.js" charset="utf-8"></script>
