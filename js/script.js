@@ -77,6 +77,8 @@ function printFilmsSearch (allFilms){
       vote_average: thisFilm.vote_average
      };
 
+
+
     var html = template(context);
     $('.covers').append(html)
   };
@@ -97,6 +99,10 @@ function ajaxCall(fieldResearch) {
       var allFilms = data.results;
       console.log(allFilms);
       //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
+      if (allFilms == 0) {
+        console.log('Il film non esiste');
+        $('.covers').append('La tua ricerca non ha prodotto risultati')
+      }
       printFilmsSearch(allFilms)
     },
     error: function(request, state, errors){
