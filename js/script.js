@@ -44,7 +44,22 @@
 //             "poster_path": "/84f5S28ITlbzo6rxiTHgwTVo8Sh.jpg"
 //         },
 
-
+var query = 'Rocky';
 $(document).ready(function() {
+  $.ajax({
+    url: 'https://api.themoviedb.org/3/search/movie',
+    method: 'GET',
+    data: {
+      api_key: '8d266159d93c16994b091fb8d2846c24',
+      query: query,
+      language: 'it-IT'
+    },
+    success: function(data){
+      console.log(data);
+    },
+    error: function(request, state, errors){
+      console.log(errors);
+    }
+  })
 
 });
