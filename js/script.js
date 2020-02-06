@@ -49,32 +49,12 @@ $(document).ready(function() {
     // creo una variabile per l'impostazione della ricerca e le attribuisco il nome fieldResearch e poi inserisco il nome della variabile nella query.
 
     // inserisco un confronto per invitare a scrivere qualcosa nel campo ricerca
-
     var fieldResearch = $('.field_input').val();
     if (fieldResearch.length == 0) {
       alert('Utilizza l\'input dedicato alla ricerca')
     }
     else {
-      $.ajax({
-        url: 'https://api.themoviedb.org/3/search/movie',
-        method: 'GET',
-        data: {
-          api_key: '8d266159d93c16994b091fb8d2846c24',
-          query: fieldResearch,
-          language: 'it-IT'
-        },
-        success: function(data){
-          console.log(data);
-          var allFilms = data.results;
-          console.log(allFilms);
-          //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
-          printFilmsSearch(allFilms)
-        },
-        error: function(request, state, errors){
-          alert("E' avvenuto un errore.")
-          console.log(errors);
-        }
-      });
+      ajaxCall(fieldResearch)
     };
     // imposto fuori dalla chiamata ajax il comando per svuotare il campo di ricerca.
     $('.field_input').val('');
@@ -105,3 +85,26 @@ function printFilmsSearch (allFilms){
     $('.covers').append(html)
   };
 };
+
+function ajaxCall(fieldResearch) {
+  $.ajax({
+    url: 'https://api.themoviedb.org/3/search/movie',
+    method: 'GET',
+    data: {
+      api_key: '8d266159d93c16994b091fb8d2846c24',
+      query: fieldResearch,
+      language: 'it-IT'
+    },
+    success: function(data){
+      console.log(data);
+      var allFilms = data.results;
+      console.log(allFilms);
+      //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
+      printFilmsSearch(allFilms)
+    },
+    error: function(request, state, errors){
+      alert("E' avvenuto un errore.")
+      console.log(errors);
+    }
+  });
+}
