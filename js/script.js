@@ -70,6 +70,9 @@ $(document).ready(function() {
         console.log(errors);
       }
     });
+    // imposto fuori dalla chiamata ajax il comando per svuotare il campo di ricerca.
+    $('.field_input').val('');
+
   });
 });
 
