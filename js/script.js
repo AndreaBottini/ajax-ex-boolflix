@@ -20,6 +20,31 @@
 // var context = { title: "My New Post", body: "This is my first post!" };
 // var html = template(context);
 
-$(document).ready({
+//VALORI CHE MI SERVONO PER LA RICERCA
+// "page": 1,
+//     "total_results": 202,
+//     "total_pages": 11,
+//     "results": [
+//         {
+//             "popularity": 17.529,
+//             "id": 1366,
+//             "video": false,
+//             "vote_count": 4280,
+//             "vote_average": 7.7,
+//             "title": "Rocky",
+//             "release_date": "1976-11-21",
+//             "original_language": "en",
+//             "original_title": "Rocky",
+//             "genre_ids": [
+//                 18
+//             ],
+//             "backdrop_path": "/2kkyt0FLROrXt41IgSdE7goCFNQ.jpg",
+//             "adult": false,
+//             "overview": "Rocky Balboa vivacchia a Filadelfia, riscuotendo i crediti di un usuraio italo-americano e vincendo qualche piccolo incontro come pugile dilettante. Con l'aiuto di un saggio allenatore accetta per amore di Adriana e per una borsa di 150000 dollari la sfida del nero Apollo Creed, campione dei pesi massimi, proponendosi non di vincere, ma di arrivare alla 15a ripresa.",
+//             "poster_path": "/84f5S28ITlbzo6rxiTHgwTVo8Sh.jpg"
+//         },
+
+
+$(document).ready(function() {
 
 });
