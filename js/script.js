@@ -56,6 +56,10 @@ $(document).ready(function() {
     },
     success: function(data){
       console.log(data);
+      var allFilms = data.results;
+      console.log(allFilms);
+      //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
+      printFilmsSearch(allFilms)
     },
     error: function(request, state, errors){
       console.log(errors);
@@ -63,3 +67,11 @@ $(document).ready(function() {
   })
 
 });
+
+function printFilmsSearch (allFilms){
+  for (var i = 0; i < allFilms.length; i++) {
+    var thisFilm = allFilms[i];
+    // qui sopra ottengo la posizione del singolo film
+    console.log(thisFilm);
+  };
+}
