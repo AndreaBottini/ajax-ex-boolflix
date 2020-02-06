@@ -10,7 +10,15 @@
 // 3. Lingua
 // 4. Voto
 
+// --CHIAVE API--
 //Chiave API generata: 8d266159d93c16994b091fb8d2846c24
+
+//--MATERIALE HANDLEBARS NECESSARIO--
+// var source = document.getElementById("entry-template").innerHTML;
+// var template = Handlebars.compile(source);
+//
+// var context = { title: "My New Post", body: "This is my first post!" };
+// var html = template(context);
 
 $(document).ready({
 
