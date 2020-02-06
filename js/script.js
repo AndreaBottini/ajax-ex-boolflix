@@ -48,35 +48,42 @@ $(document).ready(function() {
     console.log('proviamo il click');
     // creo una variabile per l'impostazione della ricerca e le attribuisco il nome fieldResearch e poi inserisco il nome della variabile nella query.
 
-    var fieldResearch = $('.field_input').val();
+    // inserisco un confronto per invitare a scrivere qualcosa nel campo ricerca
 
-    $.ajax({
-      url: 'https://api.themoviedb.org/3/search/movie',
-      method: 'GET',
-      data: {
-        api_key: '8d266159d93c16994b091fb8d2846c24',
-        query: fieldResearch,
-        language: 'it-IT'
-      },
-      success: function(data){
-        console.log(data);
-        var allFilms = data.results;
-        console.log(allFilms);
-        //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
-        printFilmsSearch(allFilms)
-      },
-      error: function(request, state, errors){
-        alert("E' avvenuto un errore.")
-        console.log(errors);
-      }
-    });
+    var fieldResearch = $('.field_input').val();
+    if (fieldResearch.length == 0) {
+      alert('Utilizza l\'input dedicato alla ricerca')
+    }
+    else {
+      $.ajax({
+        url: 'https://api.themoviedb.org/3/search/movie',
+        method: 'GET',
+        data: {
+          api_key: '8d266159d93c16994b091fb8d2846c24',
+          query: fieldResearch,
+          language: 'it-IT'
+        },
+        success: function(data){
+          console.log(data);
+          var allFilms = data.results;
+          console.log(allFilms);
+          //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
+          printFilmsSearch(allFilms)
+        },
+        error: function(request, state, errors){
+          alert("E' avvenuto un errore.")
+          console.log(errors);
+        }
+      });
+    };
     // imposto fuori dalla chiamata ajax il comando per svuotare il campo di ricerca.
     $('.field_input').val('');
     // imposto fuori dalla chiamata ajax il comando per svuotare la pagina se effettuo una nuova ricerca.
     $('.covers').text('');
-
   });
 });
+
+// FUNZIONI
 
 function printFilmsSearch (allFilms){
   var source = $('#film-template').html();
@@ -87,16 +94,14 @@ function printFilmsSearch (allFilms){
     // qui sopra ottengo la posizione del singolo film
     console.log(thisFilm);
 
-
     var context = {
       title: thisFilm.title,
       original_title: thisFilm.original_title,
       original_language: thisFilm.original_language,
       vote_average: thisFilm.vote_average
      };
+
     var html = template(context);
-
     $('.covers').append(html)
-
   };
-}
+};
