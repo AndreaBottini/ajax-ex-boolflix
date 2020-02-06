@@ -72,6 +72,8 @@ $(document).ready(function() {
     });
     // imposto fuori dalla chiamata ajax il comando per svuotare il campo di ricerca.
     $('.field_input').val('');
+    // imposto fuori dalla chiamata ajax il comando per svuotare la pagina se effettuo una nuova ricerca.
+    $('.covers').text('');
 
   });
 });
