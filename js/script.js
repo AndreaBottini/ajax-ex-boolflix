@@ -14,11 +14,8 @@
 //Chiave API generata: 8d266159d93c16994b091fb8d2846c24
 
 //--MATERIALE HANDLEBARS NECESSARIO--
-// var source = document.getElementById("entry-template").innerHTML;
-// var template = Handlebars.compile(source);
+
 //
-// var context = { title: "My New Post", body: "This is my first post!" };
-// var html = template(context);
 
 //VALORI CHE MI SERVONO PER LA RICERCA
 // "page": 1,
@@ -69,9 +66,24 @@ $(document).ready(function() {
 });
 
 function printFilmsSearch (allFilms){
+  var source = $('#film-template').html();
+  var template = Handlebars.compile(source);
+
   for (var i = 0; i < allFilms.length; i++) {
     var thisFilm = allFilms[i];
     // qui sopra ottengo la posizione del singolo film
     console.log(thisFilm);
+
+
+    var context = {
+      title: thisFilm.title,
+      original_title: thisFilm.original_title,
+      original_language: thisFilm.original_language,
+      vote_average: thisFilm.vote_average
+     };
+    var html = template(context);
+
+    $('.covers').append(html)
+
   };
 }
