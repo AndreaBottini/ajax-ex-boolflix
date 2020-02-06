@@ -43,6 +43,9 @@
 
 var query = 'Rocky';
 $(document).ready(function() {
+  $('button').click(function(){
+    console.log('proviamo il click');
+  })
   $.ajax({
     url: 'https://api.themoviedb.org/3/search/movie',
     method: 'GET',
