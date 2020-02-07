@@ -69,16 +69,16 @@ function printFilmsSearch (allFilms){
     var thisFilm = allFilms[i];
     // qui sopra ottengo la posizione del singolo film
     console.log(thisFilm);
+    // qui sotto creo la variabile per trasformare i decimali in votazione da 1 a 5. Uso la proprietà Math.round e divido per 2.
+    var printStar = Math.round(thisFilm.vote_average/2);
+    console.log(printStar);
 
     var context = {
       title: thisFilm.title,
       original_title: thisFilm.original_title,
       original_language: thisFilm.original_language,
-      vote_average: thisFilm.vote_average
+      vote_average: printStar
      };
-
-
-
     var html = template(context);
     $('.covers').append(html)
   };
@@ -86,11 +86,13 @@ function printFilmsSearch (allFilms){
 //Mi permette di far partire la chiamata Ajax per ricevere la lista di titoli FILM di mio interesse in base alla chiave API inserita. All'interno di questa funzione, vado anache a richiamare la funzione stampa tutti i film (QUI SOPRA).
 
 function ajaxCall(fieldResearch) {
+  var url = 'https://api.themoviedb.org/3/search/movie';
+  var api_key = '8d266159d93c16994b091fb8d2846c24';
   $.ajax({
-    url: 'https://api.themoviedb.org/3/search/movie',
+    url: url,
     method: 'GET',
     data: {
-      api_key: '8d266159d93c16994b091fb8d2846c24',
+      api_key: api_key,
       query: fieldResearch,
       language: 'it-IT'
     },
