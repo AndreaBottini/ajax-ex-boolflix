@@ -67,10 +67,14 @@ function printFilmsSearch (allFilms){
     // qui sopra ottengo la posizione del singolo film
     console.log(thisFilm);
 
+    var printFlag = thisFilm.original_language;
+    console.log(printFlag);
+
     var context = {
       title: thisFilm.title,
       original_title: thisFilm.original_title,
       original_language: thisFilm.original_language,
+      country: printFlag,
       vote_average: printStars(thisFilm.vote_average)
      };
     var html = template(context);

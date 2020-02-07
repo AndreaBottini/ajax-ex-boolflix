@@ -27,3 +27,7 @@ body {
 .yellow {
   color: yellow;
 }
+
+.flags{
+  height: 20px;
+}
