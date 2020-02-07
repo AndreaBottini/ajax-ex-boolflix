@@ -52,14 +52,11 @@ $(document).ready(function() {
     else {
       ajaxCall(fieldResearch)
     };
-    // imposto fuori dalla chiamata ajax il comando per svuotare il campo di ricerca.
-    $('.field_input').val('');
-    // imposto fuori dalla chiamata ajax il comando per svuotare la pagina se effettuo una nuova ricerca.
-    $('.covers').text('');
+    resetSearch()
   });
 });
 
-// FUNZIONI
+// **************FUNZIONI*******************
 //Mi permette di stampare i film all'interno dell'API e di inserirli in un array attraverso un ciclo for e riportarli poi sull'HTML tramite Handlebars.
 function printFilmsSearch (allFilms){
   var source = $('#film-template').html();
@@ -69,27 +66,12 @@ function printFilmsSearch (allFilms){
     var thisFilm = allFilms[i];
     // qui sopra ottengo la posizione del singolo film
     console.log(thisFilm);
-    // qui sotto creo la variabile per trasformare i decimali in votazione da 1 a 5. Uso la proprietà Math.round e divido per 2.
-    var printStar = Math.round(thisFilm.vote_average/2);
-    console.log(printStar);
-
-    //ciclo per il calcolo della votazione. Per ottenerlo,
-    // creo un ciclo che calcola le stelline ottenute in precedenza con la variabile printStar. PrintStar infatti, mi da la votazione da uno a 5, di conseguenza, effettuo il confronto e gli dico che se una stella è minore della votazione, allora deve stampare il numero di stelline corrispondente. 
-    for (var stella = 0; stella < printStar; stella++) {
-      if (stella < printStar) {
-        var riproduci = 'numero stelle';
-      }
-      else {
-        var riproduci = 'numero stelle';
-      }
-      console.log(riproduci);
-    };
 
     var context = {
       title: thisFilm.title,
       original_title: thisFilm.original_title,
       original_language: thisFilm.original_language,
-      vote_average: printStar
+      vote_average: printStars(thisFilm.vote_average)
      };
     var html = template(context);
     $('.covers').append(html)
@@ -124,4 +106,30 @@ function ajaxCall(fieldResearch) {
       console.log(errors);
     }
   });
+}
+
+//Qui sotto creo la variabile per trasformare i decimali in votazione da 1 a 5. Uso la proprietà Math.round e divido per 2.
+//ciclo per il calcolo della votazione. Per ottenerlo,
+//creo un ciclo che calcola le stelline ottenute in precedenza con la variabile printStar. PrintStar infatti, mi da la votazione da uno a 5, di conseguenza, effettuo il confronto e gli dico che se una stella è minore della votazione, allora deve stampare il numero di stelline corrispondente. Per fare ciò, inserisco una stringa con fontawsome e poi sposto tutto in una funzione.
+function printStars(voteFilm) {
+  var printStar = Math.round(voteFilm/2);
+  console.log(printStar);
+  var stars = '';
+  for (var i = 1; i <= 5; i++) {
+    if (i < printStar) {
+      var star = '<i class="fas fa-star yellow"></i>';
+    }
+    else {
+      var star = '<i class="far fa-star"></i>';
+    }
+    stars += star;
+  };
+  return stars;
+};
+
+function resetSearch() {
+// imposto fuori dalla chiamata ajax il comando per svuotare il campo di ricerca.
+$('.field_input').val('');
+// imposto fuori dalla chiamata ajax il comando per svuotare la pagina se effettuo una nuova ricerca.
+$('.covers').text('');
 }
