@@ -69,6 +69,11 @@ function printFilmsSearch (allFilms){
 
     var printFlag = thisFilm.original_language;
     console.log(printFlag);
+    if (printFlag == 'it' || printFlag == 'es' || printFlag == 'fr' || printFlag == 'en' || printFlag == 'de') {
+      printFlag
+    } else {
+      printFlag = ''
+    }
 
     var context = {
       title: thisFilm.title,
