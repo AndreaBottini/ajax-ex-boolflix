@@ -73,6 +73,16 @@ function printFilmsSearch (allFilms){
     var printStar = Math.round(thisFilm.vote_average/2);
     console.log(printStar);
 
+    //ciclo per il calcolo della votazione.
+    for (var stella = 0; stella < 5; stella++) {
+      if (stella < printStar) {
+        console.log('il voto è:');
+      }
+      else {
+        console.log('il voto è:');
+      }
+    };
+
     var context = {
       title: thisFilm.title,
       original_title: thisFilm.original_title,
