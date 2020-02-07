@@ -73,14 +73,16 @@ function printFilmsSearch (allFilms){
     var printStar = Math.round(thisFilm.vote_average/2);
     console.log(printStar);
 
-    //ciclo per il calcolo della votazione.
-    for (var stella = 0; stella < 5; stella++) {
+    //ciclo per il calcolo della votazione. Per ottenerlo,
+    // creo un ciclo che calcola le stelline ottenute in precedenza con la variabile printStar. PrintStar infatti, mi da la votazione da uno a 5, di conseguenza, effettuo il confronto e gli dico che se una stella è minore della votazione, allora deve stampare il numero di stelline corrispondente. 
+    for (var stella = 0; stella < printStar; stella++) {
       if (stella < printStar) {
-        console.log('il voto è:');
+        var riproduci = 'numero stelle';
       }
       else {
-        console.log('il voto è:');
+        var riproduci = 'numero stelle';
       }
+      console.log(riproduci);
     };
 
     var context = {
