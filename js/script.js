@@ -50,7 +50,8 @@ $(document).ready(function() {
       alert('Utilizza l\'input dedicato alla ricerca')
     }
     else {
-      ajaxCall(fieldResearch)
+      ajaxCallFilms(fieldResearch)
+      ajaxCallSeries(fieldResearch)
     };
     resetSearch()
   });
@@ -72,7 +73,7 @@ function printFilmsSearch (allFilms){
     if (printFlag == 'it' || printFlag == 'es' || printFlag == 'fr' || printFlag == 'en' || printFlag == 'de') {
       printFlag
     } else {
-      printFlag = ''
+      printFlag = '';
     }
 
     var context = {
@@ -86,13 +87,42 @@ function printFilmsSearch (allFilms){
     $('.covers').append(html)
   };
 };
+function printSeriesSearch (allSeries){
+  var source = $('#series-template').html();
+  var template = Handlebars.compile(source);
+
+  for (var i = 0; i < allSeries.length; i++) {
+    var thisSerie = allSeries[i];
+    // qui sopra ottengo la posizione del singolo film
+    console.log(thisSerie);
+
+    var printFlag = thisSerie.original_language;
+    console.log(printFlag);
+    if (printFlag == 'it' || printFlag == 'es' || printFlag == 'fr' || printFlag == 'en' || printFlag == 'de') {
+      printFlag
+    } else {
+      printFlag = '';
+    }
+
+    var context = {
+      name: thisSerie.name,
+      original_name: thisSerie.original_name,
+      original_language: thisSerie.original_language,
+      country: printFlag,
+      vote_average: printStars(thisSerie.vote_average)
+     };
+    var html = template(context);
+    $('.covers').append(html)
+  };
+};
 //Mi permette di far partire la chiamata Ajax per ricevere la lista di titoli FILM di mio interesse in base alla chiave API inserita. All'interno di questa funzione, vado anache a richiamare la funzione stampa tutti i film (QUI SOPRA).
 
-function ajaxCall(fieldResearch) {
-  var url = 'https://api.themoviedb.org/3/search/movie';
+function ajaxCallFilms(fieldResearch) {
+  var urlFilms = 'https://api.themoviedb.org/3/search/movie';
+  var urlSeries = 'https://api.themoviedb.org/3/search/tv'
   var api_key = '8d266159d93c16994b091fb8d2846c24';
   $.ajax({
-    url: url,
+    url: urlFilms,
     method: 'GET',
     data: {
       api_key: api_key,
@@ -105,10 +135,39 @@ function ajaxCall(fieldResearch) {
       console.log(allFilms);
       //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
       if (allFilms == 0) {
-        console.log('Il film non esiste');
-        $('.covers').append('La tua ricerca non ha prodotto risultati')
+        // console.log('Il film non esiste');
+        // $('.covers').append('La tua ricerca non ha prodotto risultati')
       }
       printFilmsSearch(allFilms)
+    },
+    error: function(request, state, errors){
+      alert("E' avvenuto un errore.")
+      console.log(errors);
+    }
+  });
+}
+
+function ajaxCallSeries(fieldResearch) {
+  var urlSeries = 'https://api.themoviedb.org/3/search/tv'
+  var api_key = '8d266159d93c16994b091fb8d2846c24';
+  $.ajax({
+    url: urlSeries,
+    method: 'GET',
+    data: {
+      api_key: api_key,
+      query: fieldResearch,
+      language: 'it-IT'
+    },
+    success: function(data){
+      console.log(data);
+      var allSeries = data.results;
+      console.log(allSeries);
+      //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
+      if (allSeries == 0) {
+        // console.log('La serie TV non esiste');
+        // $('.covers').append('La tua ricerca non ha prodotto risultati')
+      }
+      printSeriesSearch(allSeries)
     },
     error: function(request, state, errors){
       alert("E' avvenuto un errore.")
