@@ -84,7 +84,7 @@ function printFilmsSearch (allFilms){
       vote_average: printStars(thisFilm.vote_average)
      };
     var html = template(context);
-    $('.covers').append(html)
+    $('.films').append(html)
   };
 };
 function printSeriesSearch (allSeries){
@@ -112,7 +112,7 @@ function printSeriesSearch (allSeries){
       vote_average: printStars(thisSerie.vote_average)
      };
     var html = template(context);
-    $('.covers').append(html)
+    $('.series').append(html)
   };
 };
 //Mi permette di far partire la chiamata Ajax per ricevere la lista di titoli FILM di mio interesse in base alla chiave API inserita. All'interno di questa funzione, vado anache a richiamare la funzione stampa tutti i film (QUI SOPRA).
@@ -135,8 +135,8 @@ function ajaxCallFilms(fieldResearch) {
       console.log(allFilms);
       //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
       if (allFilms == 0) {
-        // console.log('Il film non esiste');
-        // $('.covers').append('La tua ricerca non ha prodotto risultati')
+        console.log('Il film non esiste');
+        $('.films').append('CATEGORIA FILM: La tua ricerca non ha prodotto alcun risultato')
       }
       printFilmsSearch(allFilms)
     },
@@ -164,8 +164,8 @@ function ajaxCallSeries(fieldResearch) {
       console.log(allSeries);
       //Qui sopra ottengo l'array e lo passo poi alla funzione che vado a costruire
       if (allSeries == 0) {
-        // console.log('La serie TV non esiste');
-        // $('.covers').append('La tua ricerca non ha prodotto risultati')
+        console.log('La serie TV non esiste');
+        $('.series').append('CATEGORIA TV SERIES: La tua ricerca non ha prodotto alcun risultato')
       }
       printSeriesSearch(allSeries)
     },
@@ -199,5 +199,6 @@ function resetSearch() {
 // imposto fuori dalla chiamata ajax il comando per svuotare il campo di ricerca.
 $('.field_input').val('');
 // imposto fuori dalla chiamata ajax il comando per svuotare la pagina se effettuo una nuova ricerca.
-$('.covers').text('');
+$('.series').text('');
+$('.films').text('');
 }

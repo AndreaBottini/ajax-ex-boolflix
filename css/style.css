@@ -20,7 +20,11 @@ body {
   height: 20px;
 }
 
-.covers {
+.films {
+  margin-left: 40px;
+}
+
+.series {
   margin-left: 40px;
 }
 

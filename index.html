@@ -19,24 +19,29 @@
   <input class="field_input" type="text" name="" value="" placeholder="Carca un film o una serie">
   <button class="button_research" type="button" name="button">Avvia la ricerca</button>
   <!-- SEZIONE LISTA FILM -->
-  <ul class="covers">
+  <ul class="films">
+
+  </ul>
+  <ul class="series">
 
   </ul>
   <!-- SEZIONE HANDLEBARS -->
   <script id="film-template" type="text/x-handlebars-template">
+    <h3>FILM</h3>
     <li>{{title}}
       <ul>
         <li>Titolo Originale: {{original_title}}</li>
-        <li>Lingua Originale: <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
+        <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
         <li>Voto: {{{vote_average}}}</li>
       </ul>
     </li>
   </script>
   <script id="series-template" type="text/x-handlebars-template">
+    <h3>TV SERIES</h3>
     <li>{{name}}
       <ul>
         <li>Titolo Originale: {{original_name}}</li>
-        <li>Lingua Originale: <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
+        <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
         <li>Voto: {{{vote_average}}}</li>
       </ul>
     </li>
