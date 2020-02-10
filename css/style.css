@@ -7,6 +7,7 @@
 body {
   background-color: lime;
   font-family: 'Roboto Condensed', sans-serif;
+  color: white;
 }
 .field_input {
   width: 25%;
@@ -49,14 +50,22 @@ body {
   vertical-align: middle;
 }
 
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .films {
   display: flex;
-  margin-left: 40px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .series {
-  dispaly: flex;
-  margin-left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .white {

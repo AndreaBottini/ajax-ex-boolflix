@@ -76,13 +76,18 @@ function printFilmsSearch (allFilms){
       printFlag = '';
     }
 
+    var printPlayBill = 'img/no-image.jpeg';
+    if(thisFilm.poster_path) {
+      printPlayBill = 'https://image.tmdb.org/t/p/w185' + thisFilm.poster_path;
+    }
+
     var context = {
       title: thisFilm.title,
       original_title: thisFilm.original_title,
       original_language: thisFilm.original_language,
       country: printFlag,
       vote_average: printStars(thisFilm.vote_average),
-      poster_path: "https://image.tmdb.org/t/p/w154" + thisFilm.poster_path
+      poster_path: printPlayBill
      };
     var html = template(context);
     $('.films').append(html)
@@ -105,13 +110,27 @@ function printSeriesSearch (allSeries){
       printFlag = '';
     }
 
+    // Confronto nel caso in cui non esista la locandina, modo 1
+    // var printPlayBill = 'https://image.tmdb.org/t/p/w154' + thisSerie.poster_path;
+    // var errorPlayBill = 'https://image.tmdb.org/t/p/w154null';
+    // console.log(thisSerie.poster_path);
+    // if (printPlayBill == errorPlayBill) {
+    //   printPlayBill = 'img/no-image.jpeg'
+    // }
+
+    // Confronto nel caso in cui non ci sia la locandina: modo 2
+    var printPlayBill = 'img/no-image.jpeg';
+    if(thisSerie.poster_path) {
+      printPlayBill = 'https://image.tmdb.org/t/p/w185' + thisSerie.poster_path;
+    }
+
     var context = {
       name: thisSerie.name,
       original_name: thisSerie.original_name,
       original_language: thisSerie.original_language,
       country: printFlag,
       vote_average: printStars(thisSerie.vote_average),
-      poster_path: "https://image.tmdb.org/t/p/w154" + thisSerie.poster_path
+      poster_path: printPlayBill
      };
     var html = template(context);
     $('.series').append(html)

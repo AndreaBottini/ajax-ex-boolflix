@@ -29,16 +29,17 @@
         <i class="fas fa-search white"></i>
       </div>
     </div>
-
   </header>
 
   <!-- SEZIONE LISTA FILM -->
+  <div class="container">
   <ul class="films">
 
   </ul>
   <ul class="series">
 
   </ul>
+  </div>
   <!-- SEZIONE HANDLEBARS -->
   <script id="film-template" type="text/x-handlebars-template">
     <h3>FILM</h3>
@@ -47,7 +48,7 @@
         <li>Titolo Originale: {{original_title}}</li>
         <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
         <li>Voto: {{{vote_average}}}</li>
-        <li>Locandina: <img src={{poster_path}} alt=""></li>
+        <li><img src={{poster_path}} alt=""></li>
       </ul>
     </li>
   </script>
@@ -58,7 +59,7 @@
         <li>Titolo Originale: {{original_name}}</li>
         <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
         <li>Voto: {{{vote_average}}}</li>
-        <li>Locandina: <img src={{poster_path}} alt=""></li>
+        <li><img src={{poster_path}} alt=""></li>
       </ul>
     </li>
   </script>
