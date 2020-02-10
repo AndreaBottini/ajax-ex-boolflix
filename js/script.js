@@ -82,7 +82,7 @@ function printFilmsSearch (allFilms){
       original_language: thisFilm.original_language,
       country: printFlag,
       vote_average: printStars(thisFilm.vote_average),
-      poster_path: thisFilm.poster_path 
+      poster_path: "https://image.tmdb.org/t/p/w154" + thisFilm.poster_path 
      };
     var html = template(context);
     $('.films').append(html)
