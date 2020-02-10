@@ -82,7 +82,7 @@ function printFilmsSearch (allFilms){
       original_language: thisFilm.original_language,
       country: printFlag,
       vote_average: printStars(thisFilm.vote_average),
-      poster_path: "https://image.tmdb.org/t/p/w154" + thisFilm.poster_path 
+      poster_path: "https://image.tmdb.org/t/p/w154" + thisFilm.poster_path
      };
     var html = template(context);
     $('.films').append(html)
@@ -110,7 +110,8 @@ function printSeriesSearch (allSeries){
       original_name: thisSerie.original_name,
       original_language: thisSerie.original_language,
       country: printFlag,
-      vote_average: printStars(thisSerie.vote_average)
+      vote_average: printStars(thisSerie.vote_average),
+      poster_path: "https://image.tmdb.org/t/p/w154" + thisSerie.poster_path
      };
     var html = template(context);
     $('.series').append(html)
