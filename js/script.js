@@ -81,7 +81,8 @@ function printFilmsSearch (allFilms){
       original_title: thisFilm.original_title,
       original_language: thisFilm.original_language,
       country: printFlag,
-      vote_average: printStars(thisFilm.vote_average)
+      vote_average: printStars(thisFilm.vote_average),
+      poster_path: thisFilm.poster_path 
      };
     var html = template(context);
     $('.films').append(html)
@@ -127,7 +128,7 @@ function ajaxCallFilms(fieldResearch) {
     data: {
       api_key: api_key,
       query: fieldResearch,
-      language: 'it-IT'
+      language: 'it-IT',
     },
     success: function(data){
       console.log(data);
