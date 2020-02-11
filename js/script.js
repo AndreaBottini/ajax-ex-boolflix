@@ -84,6 +84,16 @@ function printFilmsSearch (allFilms){
       return printPlayBill
     };
 
+    function printResultOverview(printTrama) {
+      var printOverview = printTrama
+      console.log(printTrama);
+      if (printTrama == '') {
+        printTrama = 'La trama per il film desisderato non è disponibile.'
+      }
+      return printTrama
+    };
+
+
 
     var context = {
       title: thisFilm.title,
@@ -92,12 +102,13 @@ function printFilmsSearch (allFilms){
       country: printFlag,
       vote_average: printStars(thisFilm.vote_average),
       poster_path: printPoster(thisFilm.poster_path),
-      overview: thisFilm.overview
+      overview: printResultOverview(thisFilm.overview)
      };
     var html = template(context);
     $('.films').append(html)
   };
 };
+
 function printSeriesSearch (allSeries){
   var source = $('#series-template').html();
   var template = Handlebars.compile(source);
@@ -130,7 +141,15 @@ function printSeriesSearch (allSeries){
         printPlayBill = 'https://image.tmdb.org/t/p/w342' + thisSerie.poster_path;
       }
       return printPlayBill
-    }
+    };
+    function printResultOverview(printTrama) {
+        if (printTrama == '') {
+          console.log('la ricerca è nulla');
+          printTrama = 'La trama per la serie desiderata non è disponbile'
+        }
+        return printTrama
+    };
+
 
 
     var context = {
@@ -140,7 +159,7 @@ function printSeriesSearch (allSeries){
       country: printFlag,
       vote_average: printStars(thisSerie.vote_average),
       poster_path: printPoster(thisSerie.poster_path),
-      overview: thisSerie.overview
+      overview: printResultOverview(thisSerie.overview)
      };
     var html = template(context);
     $('.series').append(html)
