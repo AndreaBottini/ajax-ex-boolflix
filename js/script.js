@@ -91,7 +91,8 @@ function printFilmsSearch (allFilms){
       original_language: thisFilm.original_language,
       country: printFlag,
       vote_average: printStars(thisFilm.vote_average),
-      poster_path: printPoster(thisFilm.poster_path)
+      poster_path: printPoster(thisFilm.poster_path),
+      overview: thisFilm.overview
      };
     var html = template(context);
     $('.films').append(html)
@@ -138,7 +139,8 @@ function printSeriesSearch (allSeries){
       original_language: thisSerie.original_language,
       country: printFlag,
       vote_average: printStars(thisSerie.vote_average),
-      poster_path: printPoster(thisSerie.poster_path)
+      poster_path: printPoster(thisSerie.poster_path),
+      overview: thisSerie.overview
      };
     var html = template(context);
     $('.series').append(html)
