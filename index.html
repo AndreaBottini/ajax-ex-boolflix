@@ -42,28 +42,40 @@
   </div>
   <!-- SEZIONE HANDLEBARS -->
   <script id="film-template" type="text/x-handlebars-template">
-    <h3>FILM</h3>
-    <li>{{title}}
-      <ul>
-        <li>Titolo Originale: {{original_title}}</li>
-        <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
-        <li>Voto: {{{vote_average}}}</li>
-        <li><img class="poster" src={{poster_path}} alt=""></li>
-        <li>Trama: {{overview}}</li>
-      </ul>
-    </li>
+    <div class="container_spec">
+      <h3>FILM</h3>
+      <div class="container_image">
+        <img class="poster" src={{poster_path}} alt="">
+        <div class="container_info">
+          <li>{{title}}
+            <ul>
+              <li>Titolo Originale: {{original_title}}</li>
+              <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
+              <li>Voto: {{{vote_average}}}</li>
+              <li>Trama: {{overview}}</li>
+            </ul>
+          </li>
+        </div>
+      </div>
+    </div>
   </script>
   <script id="series-template" type="text/x-handlebars-template">
-    <h3>TV SERIES</h3>
-    <li>{{name}}
-      <ul>
-        <li>Titolo Originale: {{original_name}}</li>
-        <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
-        <li>Voto: {{{vote_average}}}</li>
-        <li><img class="poster" src={{poster_path}} alt=""></li>
-        <li>Trama: {{overview}}</li>
-      </ul>
-    </li>
+    <div class="container_spec">
+      <h3>TV SERIES</h3>
+      <div class="container_image">
+        <img class="poster" src={{poster_path}} alt="">
+        <div class="container_info">
+          <li>{{name}}
+            <ul>
+              <li>Titolo Originale: {{original_name}}</li>
+              <li>Lingua Originale: {{original_language}} <img class="flags" src="img/bandiera-{{country}}.png" alt=""></li>
+              <li>Voto: {{{vote_average}}}</li>
+              <li>Trama: {{overview}}</li>
+            </ul>
+          </li>
+        </div>
+      </div>
+    </div>
   </script>
 
   <script src="js/script.js" charset="utf-8"></script>
