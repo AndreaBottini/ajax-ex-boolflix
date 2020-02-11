@@ -40,6 +40,19 @@
 // var query = 'Rocky';
 
 $(document).ready(function() {
+  $('input').keypress(function() {
+    if (event.which == 13 || event.keycode == 13) {
+      var fieldResearch = $('.field_input').val();
+      if (fieldResearch.length == 0) {
+        alert('Utilizza l\'input dedicato alla ricerca')
+      }
+      else {
+        ajaxCallFilms(fieldResearch)
+        ajaxCallSeries(fieldResearch)
+      };
+      resetSearch()
+    }
+  });
   $('.button_research').click(function() {
     console.log('proviamo il click');
     // creo una variabile per l'impostazione della ricerca e le attribuisco il nome fieldResearch e poi inserisco il nome della variabile nella query.
