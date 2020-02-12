@@ -137,12 +137,12 @@ function printSeriesSearch (allSeries){
     // qui sopra ottengo la posizione del singolo film
     console.log(thisSerie);
 
+    var arrayFlag = ['it', 'es', 'fr', 'en', 'de'];
     var printFlag = thisSerie.original_language;
-    console.log(printFlag);
-    if (printFlag == 'it' || printFlag == 'es' || printFlag == 'fr' || printFlag == 'en' || printFlag == 'de') {
+    if (arrayFlag.includes(printFlag)) {
       printFlag
     } else {
-      printFlag = '';
+      printFlag = ''
     };
 
     // Confronto nel caso in cui non esista la locandina, modo 1
