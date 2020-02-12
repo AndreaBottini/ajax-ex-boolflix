@@ -106,8 +106,6 @@ function printFilmsSearch (allFilms){
       return printTrama
     };
 
-
-
     var context = {
       title: thisFilm.title,
       original_title: thisFilm.original_title,
@@ -137,7 +135,7 @@ function printSeriesSearch (allSeries){
       printFlag
     } else {
       printFlag = '';
-    }
+    };
 
     // Confronto nel caso in cui non esista la locandina, modo 1
     // var printPlayBill = 'https://image.tmdb.org/t/p/w154' + thisSerie.poster_path;
@@ -155,6 +153,7 @@ function printSeriesSearch (allSeries){
       }
       return printPlayBill
     };
+
     function printResultOverview(printTrama) {
         if (printTrama == '') {
           console.log('la ricerca è nulla');
@@ -162,8 +161,6 @@ function printSeriesSearch (allSeries){
         }
         return printTrama
     };
-
-
 
     var context = {
       name: thisSerie.name,
@@ -208,7 +205,7 @@ function ajaxCallFilms(fieldResearch) {
       console.log(errors);
     }
   });
-}
+};
 
 function ajaxCallSeries(fieldResearch) {
   var urlSeries = 'https://api.themoviedb.org/3/search/tv'
@@ -237,7 +234,7 @@ function ajaxCallSeries(fieldResearch) {
       console.log(errors);
     }
   });
-}
+};
 
 //Qui sotto creo la variabile per trasformare i decimali in votazione da 1 a 5. Uso la proprietà Math.round e divido per 2.
 //ciclo per il calcolo della votazione. Per ottenerlo,
@@ -264,4 +261,4 @@ $('.field_input').val('');
 // imposto fuori dalla chiamata ajax il comando per svuotare la pagina se effettuo una nuova ricerca.
 $('.series').text('');
 $('.films').text('');
-}
+};
