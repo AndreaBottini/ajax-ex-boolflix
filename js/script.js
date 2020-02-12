@@ -81,13 +81,21 @@ function printFilmsSearch (allFilms){
     // qui sopra ottengo la posizione del singolo film
     console.log(thisFilm);
 
+    // STAMPA BANDIERA
+    var arrayFlag = ['it', 'es', 'fr', 'en', 'de'];
     var printFlag = thisFilm.original_language;
-    console.log(printFlag);
-    if (printFlag == 'it' || printFlag == 'es' || printFlag == 'fr' || printFlag == 'en' || printFlag == 'de') {
+    if (arrayFlag.includes(printFlag)) {
       printFlag
     } else {
-      printFlag = '';
+      printFlag = ''
     };
+
+    // console.log(printFlag);
+    // if (printFlag == 'it' || printFlag == 'es' || printFlag == 'fr' || printFlag == 'en' || printFlag == 'de') {
+    //   printFlag
+    // } else {
+    //   printFlag = '';
+    // };
 
     function printPoster (thumbnail) {
       var printPlayBill = 'img/no-image.jpeg';
